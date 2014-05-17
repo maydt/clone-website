@@ -24,7 +24,7 @@ public class UserManage {
 		
 		File configurationFile = new File(dataDir, username + ".properties");
 		if (configurationFile.exists()) {
-            return "Người dùng này đã tồn tại trong hệ thống.";
+            return "Ng\u01b0\u1eddi d\u00f9ng n\u00e0y \u0111\u00e3 t\u1ed3n t\u1ea1i trong h\u1ec7 th\u1ed1ng.";
         } else {
         	try {
     			Properties properties = new Properties();
@@ -34,7 +34,7 @@ public class UserManage {
     			properties.setProperty("email", email);
     			properties.setProperty("phone", phone);
     			properties.setProperty("address", address);
-    			DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+    			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     			Date today = Calendar.getInstance().getTime();
     			String createdDate = df.format(today);
     			properties.setProperty("createdDate", createdDate);
@@ -53,7 +53,7 @@ public class UserManage {
     			e.printStackTrace();
     		}
         }
-		return "Không thể thêm người dùng tại thời điểm này, vui lòng thử lại sau.";
+		return "Kh\u00f4ng th\u1ec3 th\u00eam ng\u01b0\u1eddi d\u00f9ng t\u1ea1i th\u1eddi \u0111i\u1ec3m n\u00e0y, vui l\u00f2ng th\u1eed l\u1ea1i sau.";
 	}
 
 	public void deleteUser(String username) {

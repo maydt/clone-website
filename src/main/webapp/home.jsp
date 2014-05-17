@@ -27,7 +27,7 @@
               <div class="form-group input-group-lg">
                 <input type="text" class="form-control" id="domainName" name="domainName" placeholder="Nhập tên miền của bạn">
               </div>
-              <button id="cloneWeb" class="btn btn-primary btn-lg">Tạo website mới</button>
+              <button id="cloneWeb" type="button" class="btn btn-primary btn-lg">Tạo website mới</button>
             </form>
         </div>
         

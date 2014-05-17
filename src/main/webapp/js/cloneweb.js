@@ -1,8 +1,5 @@
     $(function(){
     	$("#cloneWeb").click(function(){
-    		$("#mainForm").submit(function(event) {
-    			if (event.preventDefault) event.preventDefault();
-    		});
     		
     		var domainName = $("#domainName").val();
     		if (domainName.length == 0) {

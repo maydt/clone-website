@@ -76,10 +76,6 @@
     		});
     		
     		$("#addUser").click(function(){
-    			$("#addUserForm").submit(function(event) {
-       			if (event.preventDefault) event.preventDefault();
-       		});
-    			
     			var username = $("#username").val();
     			var password = $("#password").val();
     			if ((username.length == 0) || (password.length == 0)) {
@@ -92,6 +88,7 @@
     			var regex = /^[\w-_\.]+$/;
     			if (!regex.test(username)) {
        			showError("danger", $("#msgForm"), "Tên truy cập chỉ được chứa các ký tự chữ cái, chữ số, gạch ngang, gạch dưới và dấu chấm.");
+       			$("#username").focus();
        			return false;
        		}
     			
@@ -221,7 +218,7 @@
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-9">
-				      <button type="submit" class="btn btn-primary" id="addUser">Thêm</button>
+				      <button type="button" class="btn btn-primary" id="addUser">Thêm</button>
 				    </div>
 				  </div>
 				</form>
@@ -238,7 +235,7 @@
 		      </div>
 		      <div class="modal-body">
 		      	<div id="msgModal" style="display: none;"></div>
-		        <form class="form-horizontal" role="form">
+		        <div class="form-horizontal">
 				  <div class="form-group">
 				    <label for="newPassword" class="col-sm-4 control-label">Mật khẩu mới</label>
 				    <div class="col-sm-6">
@@ -251,7 +248,7 @@
 				      <input type="password" class="form-control" id="renewPassword" placeholder="Xác nhận mật khẩu mới">
 				    </div>
 				  </div>
-				</form>
+				</div>
 
 		      </div>
 		      <div class="modal-footer">
