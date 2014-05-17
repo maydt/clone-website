@@ -15,7 +15,6 @@ public class CloneWebController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String webname = request.getParameter("domainName");
-		System.out.println("======" + webname);
 		WebManage webManage = new WebManage();
 		int result = webManage.execute(webname);
 		response.setContentType("text/html");

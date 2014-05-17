@@ -56,13 +56,12 @@ public class UserManage {
 		return "Kh\u00f4ng th\u1ec3 th\u00eam ng\u01b0\u1eddi d\u00f9ng t\u1ea1i th\u1eddi \u0111i\u1ec3m n\u00e0y, vui l\u00f2ng th\u1eed l\u1ea1i sau.";
 	}
 
-	public void deleteUser(String username) {
+	public boolean deleteUser(String username) {
 		try {
 			String location = tomcatDir + "/data/" + username + ".properties";
     		File file = new File(location);
  
     		if (file.delete()) {
-    			System.out.println(file.getName() + " is deleted!");
     			// Update authentication information
     			String confFile = tomcatDir + "/conf/users.properties";
     			FileInputStream in = new FileInputStream(confFile);
@@ -75,12 +74,14 @@ public class UserManage {
     			props.store(out, null);
     			out.close();
     		}
+    		return true;
     	} catch(Exception e){
     		e.printStackTrace();
     	}
+		return false;
 	}
 
-	public void updateUser(String username, String fullname, String gender,
+	public boolean updateUser(String username, String fullname, String gender,
             				String birthday, String email, String phone, String address) {
 		try {
 			String location = tomcatDir + "/data/" + username + ".properties";
@@ -90,23 +91,33 @@ public class UserManage {
 			in.close();
 	
 			FileOutputStream out = new FileOutputStream(location);
-			properties.setProperty("fullname", fullname);
-			properties.setProperty("gender", gender);
-			properties.setProperty("birthday", birthday);
-			properties.setProperty("email", email);
-			properties.setProperty("phone", phone);
-			properties.setProperty("address", address);
+			if (!StringUtils.isEmpty(fullname)) properties.setProperty("fullname", fullname);
+			if (!StringUtils.isEmpty(gender)) properties.setProperty("gender", gender);
+			if (!StringUtils.isEmpty(birthday)) properties.setProperty("birthday", birthday);
+			if (!StringUtils.isEmpty(email)) properties.setProperty("email", email);
+			if (!StringUtils.isEmpty(phone)) properties.setProperty("phone", phone);
+			if (!StringUtils.isEmpty(address)) properties.setProperty("address", address);
 			properties.store(out, null);
 			out.close();
+			return true;
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
-		}catch(IOException ie){
-			ie.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
 		}
+		return false;
 	}
 
-	public void resetPassword(String username, String newPassword) throws IOException {
-		updatePassword(username, newPassword);
+	public boolean resetPassword(String username, String newPassword) {
+		try{
+			updatePassword(username, newPassword);
+			return true;
+		} catch(FileNotFoundException e){
+			e.printStackTrace();
+		} catch(IOException e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	public List<User> getAllUsers() throws FileNotFoundException, IOException{

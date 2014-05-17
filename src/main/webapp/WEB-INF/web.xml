@@ -19,6 +19,10 @@
 	<servlet-name>CloneWebServlet</servlet-name>
 	<servlet-class>com.web.bds.CloneWebController</servlet-class>
 </servlet>
+<servlet>
+	<servlet-name>UpdateUserServlet</servlet-name>
+	<servlet-class>com.web.bds.UpdateUserController</servlet-class>
+</servlet>
 
 <servlet-mapping>
 	<servlet-name>LoginServlet</servlet-name>
@@ -31,6 +35,10 @@
 <servlet-mapping>
 	<servlet-name>CloneWebServlet</servlet-name>
 	<url-pattern>/cloneweb</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>UpdateUserServlet</servlet-name>
+	<url-pattern>/update</url-pattern>
 </servlet-mapping>
 
 </web-app>

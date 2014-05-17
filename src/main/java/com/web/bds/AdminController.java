@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,5 +38,14 @@ public class AdminController extends HttpServlet{
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 		writer.println(isUserAdded);
+	}
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("username");
+		UserManage userManage = new UserManage();
+		boolean result = userManage.deleteUser(username);
+		response.setContentType("text/html");
+		PrintWriter writer = response.getWriter();
+		writer.println(result);
 	}
 }

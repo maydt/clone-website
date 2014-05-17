@@ -21,6 +21,16 @@
   </head>
   <body>
     <div class="container">
+    
+      <nav role="navigation" class="navbar navbar-default navbar-inverse navbar-fixed-top">
+				<div style="padding-top: 2px;" class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul style="margin-right: 20px;" class="nav navbar-nav navbar-right">
+						<li><a><span class="glyphicon glyphicon-user"></span> Administrator</a></li>
+						<li><a title='Đăng xuất' href="/logout"><span class="glyphicon glyphicon-off"></span></a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</nav>
+    
         <div class="mainContent">
         		<div id="msgError" style="display: none;" class="alert alert-danger"></div>
             <form id="mainForm" class="form-inline" role="form">
