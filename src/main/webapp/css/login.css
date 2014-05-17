@@ -1,0 +1,215 @@
+body {
+	background-color: #ffffff;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.loginBGLight{
+	wbackground: none repeat scroll 0 0 white;
+	border-radius: 80px 80px 80px 80px;
+	box-shadow: 0 0 550px white;
+	left: 50%;
+    margin: -100px;
+    position: fixed;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.uiLogin {
+	
+	color: #333333;
+	display: block;
+	font-size: 12px;
+	left: 50%;
+    margin: -180px -195px 0;
+    position: fixed;
+    top: 50%;
+    width: 392px;
+}
+ 
+.uiLogin .loginContainer {  
+	border-radius: 4px;
+	background-color: #fff;
+	padding: 0 40px;
+}	
+	
+.uiLogin .loginHeader {
+	background-color: #012321;
+	border-radius: 0 0 4px 4px;
+	margin-top: -8px;
+	padding: 8px 12px;
+	position: absolute;
+	width: 286px;
+	box-shadow: 1px 2px 3px -1px rgba(0, 0, 0, 0.43);
+}
+
+.uiLogin .introBox:after {
+	border-bottom: 8px solid #2a323e;
+	border-right: 7px solid transparent;
+	right: -8px;
+}
+.uiLogin .introBox:before, .uiLogin .introBox:after {
+	border-top: medium none;
+	content: "";
+	display: inline-block;
+	height: 0;
+	position: absolute;
+	top: -1px;
+	vertical-align: top;
+	width: 0;
+}
+
+.uiLogin .introBox:before {
+	border-bottom: 8px solid #2a323e;
+	border-left: 7px solid transparent;
+	left: -8px;
+}
+
+.uiLogin .introBox:before, .uiLogin .introBox:after {
+	border-top: medium none;
+	content: "";
+	display: inline-block;
+	height: 0;
+	position: absolute;
+	top: -1px;
+	vertical-align: top;
+	width: 0;
+}
+
+.uiLogin .loginHeader .userLoginIcon{
+	background: url("../background/UserLoginIcon.png") no-repeat scroll 0 0 transparent;
+	color: #CCCCCC;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 41px;
+	padding-left: 52px;
+	width: 236px;
+}
+
+.uiLogin .loginContent{
+  padding-top: 45px;
+}
+
+.uiLogin .loginContent .username{
+	background: url("../background/username.png") no-repeat left top white;
+}
+
+.uiLogin .loginContent .password{
+	background: url("../background/password.png") no-repeat left top white;
+}
+
+.uiLogin .loginContent .username, .uiLogin .loginContent .password {
+	width: 260px ;  
+	height: 36px;
+	border: solid 1px #cbcbcb ;
+	margin: 0 0 14px;
+	color: #333333;
+	box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.075) inset;
+	border-radius: 4px;
+	padding-left: 50px;
+	color: #999;
+	font-size: 18px;
+}
+.uiLogin .loginContent input:focus{
+	color: #333;
+	border-color: #94b0df;
+	box-shadow: 0px 0px 5px rgba(19, 75, 159, 0.45) ;
+	background-position: 0 -41px;
+}
+.uiLogin .loginContent input:active{
+	color: #333;
+}
+.uiLogin .loginContent .loginButton {
+	padding: 35px 100px 30px;
+}
+
+.uiLogin .loginContent .loginButton .button{
+	border: 1px solid #224886;
+	border-radius: 4px;
+	text-align: center;
+	color: white;
+	font-size: 16px;
+	width: 120px;
+	height: 43px;
+	cursor: pointer;
+	 text-shadow: 0 -2px 0px rgba(23, 33, 37, 0.25);
+	background-color: #567ab6;
+	background-image: -moz-linear-gradient(top, #638acd, #426393);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#638acd), to(#426393));
+	background-image: -webkit-linear-gradient(top, #638acd, #426393);
+	background-image: -o-linear-gradient(top, #638acd, #426393);
+	background-image: linear-gradient(to bottom, #638acd, #426393);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff638acd', endColorstr='#ff426393', GradientType=0);
+	border-color: #426393 #426393 #2a3f5e;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	*background-color: #426393;
+	/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	border-color: #224886;
+	font-family: "Helvetica Neue Bold", Helvetica, Lucida, Arial, sans-serif;
+	font-weight: bold;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.uiLogin .loginContent .loginButton .button:hover {
+	background-color: #476ba7;
+	background-image: -moz-linear-gradient(top, #4b71b3, #426394);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4b71b3), to(#426394));
+	background-image: -webkit-linear-gradient(top, #4b71b3, #426394);
+	background-image: -o-linear-gradient(top, #4b71b3, #426394);
+	background-image: linear-gradient(to bottom, #4b71b3, #426394);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b71b3', endColorstr='#ff426394', GradientType=0);
+	border-color: #426394 #426394 #2a405f;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	*background-color: #426394;
+	/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.uiLogin .loginContent .loginButton .button:active{
+	background-color: #426393; 
+	*background-color: #3a5781;
+}
+.uiLogin .spaceRole{
+	clear: both;
+	padding: 2px 0 11px;
+}
+
+.uiLogin .rememberTxt{
+	font-size: 13px;
+	color: #567AB6;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.uiLogin .rememberTxt:hover {
+	text-decoration: underline;
+}
+
+.uiLogin .signinFail{
+    font-size: 13px;
+    line-height: 18px;
+    margin: 12px 0 0 1px;
+    padding-bottom: 5px;
+    font-weight: bold;
+		width: 310px;
+		color: #D9534F;
+}
+
+#platformInfoDiv {
+    font-size: 12px;
+    text-align:center;
+    color: #FFFFFF;
+    opacity: 0.6;
+    margin-top: 15px;
+}
+.titleLogin {
+	line-height: 12px; 
+	padding: 6px 3px 0 0;
+	min-height: 31px;
+	font-size: 11px;
+}
