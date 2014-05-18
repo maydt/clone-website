@@ -1,11 +1,11 @@
 $(function(){
 	$("#navigation").delegate("li", "click", function(){
+		var id = $(this).attr("id");
 		$("#msgForm").hide();
-		document.getElementById("userForm").reset();
+		if (id.indexOf("userlist") != -1) document.getElementById("userForm").reset();
 		$("#navigation li").removeClass("active");
 		$(this).addClass("active");
 		$("div.tab-content").hide();
-		var id = $(this).attr("id");
 		$("div." + id).show();
 	});
 	
@@ -156,8 +156,8 @@ $(function(){
 });
 
 function showError(errorType, container, msg){
-		container.html(msg);
-		container.removeClass();
-		container.addClass("alert alert-" + errorType);
-		container.show();
-	}
+	container.html(msg);
+	container.removeClass();
+	container.addClass("alert alert-" + errorType);
+	container.show();
+}
