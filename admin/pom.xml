@@ -2,22 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>addons-parent-pom</artifactId>
-    <groupId>org.exoplatform.addons</groupId>
-    <version>2</version>
-    <relativePath />
+    <artifactId>clone-website</artifactId>
+    <groupId>org.exoplatform.addons.cloneweb</groupId>
+    <version>1.0.x-SNAPSHOT</version>
   </parent>
-  <groupId>org.exoplatform.addons.cloneweb</groupId>
-  <artifactId>clone-website</artifactId>
-  <version>1.0.x-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>Clone website</name>
-
-  <properties>
-    <commons-lang3.version>3.1</commons-lang3.version>
-    <commons-fileupload.version>1.3</commons-fileupload.version>
-    <servlet.version>3.0.1</servlet.version>
-  </properties>
+  <artifactId>admin</artifactId>
+  <packaging>war</packaging>
+  <name>Admin module</name>
 
   <dependencies>
     <dependency>
@@ -38,9 +29,21 @@
     </dependency>
   </dependencies>
 
-  <modules>
-    <module>admin</module>
-    <module>user</module>
-  </modules>
+  <build>
+    <finalName>ROOT</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <archiveClasses>false</archiveClasses>
+          <archive>
+            <manifest>
+              <addClasspath>false</addClasspath>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

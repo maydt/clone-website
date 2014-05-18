@@ -23,8 +23,9 @@ public class UserAdminController extends HttpServlet {
 				List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 				for(FileItem item : multiparts){
                     if(!item.isFormField()){
-                        String name = new File(item.getName()).getName();
-                        item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
+                    	String typeName = item.getFieldName();
+                        String name = new File(typeName).getName();
+                        item.write(new File(UPLOAD_DIRECTORY + File.separator + typeName));
                         response.setContentType("text/html");
                 		PrintWriter writer = response.getWriter();
                 		writer.println(name);
