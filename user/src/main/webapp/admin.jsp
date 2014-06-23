@@ -1,6 +1,19 @@
 <%@page contentType="text/html; charset=UTF-8" language="java" %>
 <%
-	
+	String contextPath = request.getContextPath();
+	// Check login info
+	String userName = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies !=null){
+		for(Cookie cookie : cookies){
+  		if(cookie.getName().equals("user")) userName = cookie.getValue();
+		}
+	}
+	if(userName == null) {
+		contextPath = contextPath.replace("/", "%2F");
+		String redirect = "/index.jsp?initialURI=" + contextPath + "%2Fadmin.jsp";
+		response.sendRedirect(redirect);
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -123,8 +136,9 @@
    	}
     
     function ajaxUpload(formData){
+    	var contextPath = $("#contextPath").val();
     	$.ajax({
-				url : "/upload",
+				url : contextPath + "/upload",
 				contentType : false,
 				processData: false,
 				data : formData,
@@ -157,7 +171,7 @@
 	  	<nav role="navigation" class="navbar navbar-default navbar-inverse navbar-fixed-top">
 				<div style="padding-top: 2px;" class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul style="margin-right: 20px;" class="nav navbar-nav navbar-right">
-						<li><a><span class="glyphicon glyphicon-user"></span> Administrator</a></li>
+						<li><a><span class="glyphicon glyphicon-user"></span> <%=userName %></a></li>
 						<li><a title='Đăng xuất' href="/logout"><span class="glyphicon glyphicon-off"></span></a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
@@ -165,7 +179,7 @@
 		
 			<div class="mainContent">
 	  	
-		  		<input type="hidden" id="currentUser" name="currentUser" value="" />
+		  		<input type="hidden" id="contextPath" name="contextPath" value="<%=contextPath %>" />
 			  	<ul class="nav nav-pills" id="navigation">
 					  <li id="imageTab" class="active"><a>Quản lý ảnh</a></li>
 					  <li id="menuTab"><a>Quản lý danh mục</a></li>

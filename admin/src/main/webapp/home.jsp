@@ -1,4 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8" language="java" %>
+<%
+	// Check login info
+	String userName = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies !=null){
+		for(Cookie cookie : cookies){
+  		if(cookie.getName().equals("user")) userName = cookie.getValue();
+		}
+	}
+	if(userName == null) response.sendRedirect("/index.jsp?initialURI=%2Fhome.jsp");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,7 +35,7 @@
       <nav role="navigation" class="navbar navbar-default navbar-inverse navbar-fixed-top">
 				<div style="padding-top: 2px;" class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul style="margin-right: 20px;" class="nav navbar-nav navbar-right">
-						<li><a><span class="glyphicon glyphicon-user"></span> Administrator</a></li>
+						<li><a><span class="glyphicon glyphicon-user"></span> <%=userName %></a></li>
 						<li><a title='Đăng xuất' href="/logout"><span class="glyphicon glyphicon-off"></span></a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->

@@ -9,6 +9,14 @@
     <link rel="shortcut icon" type="image/x-icon"  href="/portal/favicon.ico" />
     <link rel="stylesheet" href="css/login.css" />
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type='text/javascript'>
+    $(function(){
+    	$("#username").focus();
+    });
+    function login() {
+			document.loginForm.submit();                   
+		}
+    </script>
   </head>
   <body>
     <div class="uiLogin">
@@ -31,12 +39,6 @@
         				<div id="UIPortalLoginFormAction" class="loginButton">
         					<button class="button" href="#" onclick="login();">Đăng nhập</button>
         				</div>
-
-                <script type='text/javascript'>
-        					function login() {
-        						document.loginForm.submit();                   
-        					}
-        				</script>
   		      </form>
           </div>
         </div>

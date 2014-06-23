@@ -12,6 +12,8 @@ public class User {
 	private String createdDate;
 	private String website;
 	
+	public User(){}
+	
 	public User(String username, String fullname, String gender, String birthday, String email,
 				String phone, String address, String createdDate, String website){
 		this.username = username;

@@ -24,8 +24,8 @@
 		<servlet-class>com.web.bds.UpdateUserController</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>UserAdminServlet</servlet-name>
-		<servlet-class>com.web.bds.UserAdminController</servlet-class>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.web.bds.LogoutController</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -45,8 +45,8 @@
 		<url-pattern>/update</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>UserAdminServlet</servlet-name>
-		<url-pattern>/upload</url-pattern>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>

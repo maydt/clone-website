@@ -14,10 +14,19 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.web.bds.model.UserAdminManage;
+
 public class UserAdminController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String UPLOAD_DIRECTORY = System.getProperty("catalina.base") + "/webapps";
+		UserAdminManage manager = new UserAdminManage();
+		String loginUser = manager.getLoginUser(request);
+		if (loginUser != null) {
+			UPLOAD_DIRECTORY += "/" + manager.getWebsite(loginUser);
+		}
+		UPLOAD_DIRECTORY += "/images";
+		
 		if(ServletFileUpload.isMultipartContent(request)){
 			try {
 				List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);

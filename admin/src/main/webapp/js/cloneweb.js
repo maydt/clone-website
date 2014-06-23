@@ -37,7 +37,7 @@ $(function(){
 			if (data.indexOf("true") != -1) {
 				$("#controlPopup").modal("show");
 				$("#yourWebsite").attr("href", "/" + domainName);
-				$("#yourAdminPage").attr("href", "/" + domainName + "/admin");
+				$("#yourAdminPage").attr("href", "/" + domainName + "/admin.jsp");
 			} else {
 				$("#msgError").text("Không thể khởi tạo website mới tại thời điểm này, vui lòng thử lại sau.");
     			$("#msgError").show();

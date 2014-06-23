@@ -16,16 +16,18 @@ public class LoginController extends HttpServlet {
 		String redirect = "";
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String initialURI = request.getParameter("initialURI");
 		UserManage userManage = new UserManage();
 		if (userManage.authenticate(username, password)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("login", true);
-			session.setAttribute("userid", username);
+			Cookie loginCookie = new Cookie("user", username);
+			loginCookie.setMaxAge(30*60);
+			response.addCookie(loginCookie);
 			if (username.equals("admin")) {
 				redirect = ADMIN_JSP;
 			} else {
 				redirect = HOME_JSP;
 			}
+			if (initialURI != null) redirect = initialURI;
 		} else {
 			request.setAttribute("login", false);
 			redirect = LOGIN_JSP;

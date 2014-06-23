@@ -3,6 +3,18 @@
 <%@ page import="com.web.bds.model.UserManage"%>
 <%@ page import="java.util.List"%>
 <%
+
+	// Check login info
+	String userName = null;
+  Cookie[] cookies = request.getCookies();
+  if(cookies !=null){
+    for(Cookie cookie : cookies){
+      if(cookie.getName().equals("user")) userName = cookie.getValue();
+    }
+  }
+  boolean isAdmin = false;
+  if (userName == null) response.sendRedirect("/index.jsp?initialURI=%2Fadmin.jsp");
+  else if (userName.indexOf("admin") != -1) isAdmin = true;
 	UserManage userManage = new UserManage();
 	List<User> results = userManage.getAllUsers();
 	String usersHtml = "";
@@ -14,7 +26,7 @@
 			usersHtml += "<td>" + user.getEmail() + "</td>";
 			usersHtml += "<td>" + user.getPhone() + "</td>";
 			usersHtml += "<td>" + user.getCreatedDate() + "</td>";
-			usersHtml += "<td></td>"; // Website
+			usersHtml += "<td>" + user.getWebsite() + "</td>"; // Website
 			usersHtml += "<td><a name='updateUser' title='Cập nhật' class='actionButton'><span class='glyphicon glyphicon-edit'></span></a>&nbsp;&nbsp;";
 			usersHtml += "<a title='Đổi mật khẩu' class='actionButton resetPassword'><span class='glyphicon glyphicon-lock'></span></a>&nbsp;&nbsp;";
 			usersHtml += "<a name='deleteUser' title='Xóa' class='actionButton'><span class='glyphicon glyphicon-trash'></span></a>";
@@ -59,7 +71,7 @@
   	<nav role="navigation" class="navbar navbar-default navbar-inverse navbar-fixed-top">
 			<div style="padding-top: 2px;" class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul style="margin-right: 20px;" class="nav navbar-nav navbar-right">
-					<li><a><span class="glyphicon glyphicon-user"></span> Administrator</a></li>
+					<li><a><span class="glyphicon glyphicon-user"></span> <%=userName %></a></li>
 					<li><a title='Đăng xuất' href="/logout"><span class="glyphicon glyphicon-off"></span></a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
@@ -67,6 +79,9 @@
 		
 		<div class="mainContent">
   	
+  	<% if (!isAdmin) {%>
+  		<h1 class="text-center">Bạn không có quyền xem trang này</h1>
+  	<% } else { %>
   		<input type="hidden" id="currentUser" name="currentUser" value="" />
 	  	<ul class="nav nav-pills" id="navigation">
 		  <li id="userlist" class="active"><a>Danh sách người dùng</a></li>
@@ -251,6 +266,7 @@
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
+		<% } %>
 		
 	</div>
 	</div>

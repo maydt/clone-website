@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.*;
 import java.text.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class UserManage {
@@ -97,6 +100,29 @@ public class UserManage {
 			if (!StringUtils.isEmpty(email)) properties.setProperty("email", email);
 			if (!StringUtils.isEmpty(phone)) properties.setProperty("phone", phone);
 			if (!StringUtils.isEmpty(address)) properties.setProperty("address", address);
+			
+			properties.store(out, null);
+			out.close();
+			return true;
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean updateWebsite(String username, String website){
+		try {
+			String location = tomcatDir + "/data/" + username + ".properties";
+			FileInputStream in = new FileInputStream(location);
+			Properties properties = new Properties();
+			properties.load(in);
+			in.close();
+	
+			FileOutputStream out = new FileOutputStream(location);
+			System.out.println("Web name " + website);
+			if (!StringUtils.isEmpty(website)) properties.setProperty("website", website);
 			properties.store(out, null);
 			out.close();
 			return true;
@@ -144,6 +170,47 @@ public class UserManage {
 			results.add(user);
 	    }
 		return results;
+	}
+	
+	public String getLoginUser(HttpServletRequest request) {
+		Cookie loginCookie = null;
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null){
+	        for(Cookie cookie : cookies){
+	            if(cookie.getName().equals("user")){
+	                loginCookie = cookie;
+	                break;
+	            }
+	        }
+        }
+        return loginCookie.getValue();
+	}
+	
+	public User getUser(String username) {
+		try {
+		String location = tomcatDir + "/data/" + username + ".properties";
+		File fileEntry = new File(location);
+		FileInputStream in = new FileInputStream(fileEntry);
+		Properties props = new Properties();
+		props.load(in);
+		in.close();
+		String fullname = props.getProperty("fullname");
+		String gender = props.getProperty("gender");
+		String birthday = props.getProperty("birthday");
+		String email = props.getProperty("email");
+		String phone = props.getProperty("phone");
+		String address = props.getProperty("phone");
+		String createdDate = props.getProperty("createdDate");
+		String website = props.getProperty("website");
+		
+		User user = new User(username, fullname, gender, birthday, email, phone, address, createdDate, website);
+		return user;
+		} catch (FileNotFoundException e){
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean authenticate(String username, String password) {
